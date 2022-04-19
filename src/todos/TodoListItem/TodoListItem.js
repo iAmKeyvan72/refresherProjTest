@@ -3,18 +3,18 @@ import './TodoListItem.css';
 
 const TodoListItem = ({ todo, removeTodo, completeTodo }) => {
   const handleCompleteTodo = () => {
-    completeTodo(todo.text);
+    completeTodo(todo.id);
   };
 
   const handleRemoveTodo = () => {
-    removeTodo(todo.text);
+    removeTodo(todo.id);
   };
 
   return (
     <div className="todo-item-container">
-      <h3>{todo.text}</h3>
+      <h3>{todo.title}</h3>
       <div className="buttons-container">
-        {!todo.isCompleted && (
+        {!todo.completed && (
           <button className="completed-button" onClick={handleCompleteTodo}>
             Mark As Completed
           </button>
