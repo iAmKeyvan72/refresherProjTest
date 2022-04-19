@@ -17,7 +17,7 @@ export const loadTodos = () => async (dispatch, getState) => {
     dispatch(loadTodosSuccess(todos));
   } catch (error) {
     dispatch(loadTodosFailed());
-    dispatch(displayAlert(error.message));
+    // dispatch(displayAlert(error.message));
   }
 };
 
