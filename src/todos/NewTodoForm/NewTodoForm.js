@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { getTodos } from '../selector';
 import { createTodoRequest } from '../thunks';
 
-import './NewTodoForm.css';
+import {
+  StyledNewTodoForm,
+  StyledNewTodoInput,
+  StyledNewTodoButton,
+} from './styles';
 
 const NewTodoForm = ({ todos, onCreatePressed }) => {
   const [inputValue, setInputValue] = useState('');
@@ -19,23 +24,22 @@ const NewTodoForm = ({ todos, onCreatePressed }) => {
   };
 
   return (
-    <div className="new-todo-form">
-      <input
-        className="new-todo-input"
+    <StyledNewTodoForm>
+      <StyledNewTodoInput
         type="text"
         placeholder="Type your new todo here"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
       />
-      <button className="new-todo-button" onClick={handleCreateTodo}>
+      <StyledNewTodoButton onClick={handleCreateTodo}>
         Create Todo
-      </button>
-    </div>
+      </StyledNewTodoButton>
+    </StyledNewTodoForm>
   );
 };
 
 const mapStateToProps = (state) => ({
-  todos: state.todos,
+  todos: getTodos(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

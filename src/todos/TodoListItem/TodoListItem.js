@@ -1,5 +1,10 @@
 import React from 'react';
-import './TodoListItem.css';
+import {
+  StyledButtonsContainer,
+  StyledMarkAsCompleteButton,
+  StyledRemoveTodoButton,
+  StyledTodoListItem,
+} from './styles';
 
 const TodoListItem = ({ todo, removeTodo, completeTodo }) => {
   const handleCompleteTodo = () => {
@@ -11,19 +16,19 @@ const TodoListItem = ({ todo, removeTodo, completeTodo }) => {
   };
 
   return (
-    <div className="todo-item-container">
+    <StyledTodoListItem>
       <h3>{todo.title}</h3>
-      <div className="buttons-container">
+      <StyledButtonsContainer>
         {!todo.completed && (
-          <button className="completed-button" onClick={handleCompleteTodo}>
+          <StyledMarkAsCompleteButton onClick={handleCompleteTodo}>
             Mark As Completed
-          </button>
+          </StyledMarkAsCompleteButton>
         )}
-        <button className="remove-button" onClick={handleRemoveTodo}>
+        <StyledRemoveTodoButton onClick={handleRemoveTodo}>
           Remove
-        </button>
-      </div>
-    </div>
+        </StyledRemoveTodoButton>
+      </StyledButtonsContainer>
+    </StyledTodoListItem>
   );
 };
 

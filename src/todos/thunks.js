@@ -63,7 +63,6 @@ export const completeTodoRequest = (id) => async (dispatch, getState) => {
       }),
     });
     const data = await response.json();
-    console.log('completeTodoRequest: ', data);
     dispatch(completeTodo(data.id));
   } catch (error) {
     dispatch(loadTodosFailed());

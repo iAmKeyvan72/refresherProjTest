@@ -15,4 +15,21 @@ export const StyledButtonsContainer = Styled.div`
     bottom: 12px;
     `;
 
-    export const 
+export const StyledButton = Styled.button`
+    font-size: 16px;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    display: inline-block;
+    `;
+
+export const StyledMarkAsCompleteButton = Styled(StyledButton)`
+    background-color: #22ee22;
+    `;
+
+export const StyledRemoveTodoButton = Styled(StyledButton)`
+    background-color: #ee2222;
+    margin-left: 8px;
+    `;

@@ -1,11 +1,20 @@
 import React from 'react';
+import Styled from 'styled-components';
+
 import TodoList from './todos/TodoList/TodoList';
-import './App.css';
+
+const StyledApp = Styled.div`
+  margin: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #222222;
+  width: 100vw;
+  height: 100vh;
+`;
 
 const App = () => (
-  <div className="App">
+  <StyledApp>
     <TodoList />
-  </div>
+  </StyledApp>
 );
 
 export default App;

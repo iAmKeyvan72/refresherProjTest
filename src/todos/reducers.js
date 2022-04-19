@@ -7,55 +7,45 @@ import {
   LOAD_TODOS_FAILED,
 } from './actions';
 
-export const isLoading = (state = false, action) => {
-  const { type, payload } = action;
-
-  switch (type) {
-    case LOAD_TODOS_IN_PROGRESS:
-      return true;
-
-    case LOAD_TODOS_SUCCESS:
-      return false;
-
-    case LOAD_TODOS_FAILED:
-      return false;
-
-    default:
-      return state;
-  }
+const initialState = {
+  data: [],
+  isLoading: false,
 };
 
-export const todos = (state = [], action) => {
+export const todos = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case CREATE_TODO: {
       const { todo } = payload;
-      return [todo, ...state];
+      return { ...state, data: [todo, ...state.data] };
     }
 
     case REMOVE_TODO: {
       const { id } = payload;
-      return state.filter((todo) => todo.id !== payload.id);
+      return { ...state, data: state.data.filter((todo) => todo.id !== id) };
     }
 
     case COMPLETE_TODO: {
-      console.log(payload);
-      return state.map((todo) =>
-        todo.id === payload.id ? { ...todo, completed: true } : todo
-      );
+      return {
+        ...state,
+        data: state.data.map((todo) =>
+          todo.id === payload.id ? { ...todo, completed: true } : todo
+        ),
+      };
     }
 
     case LOAD_TODOS_SUCCESS: {
-      return payload.todos;
+      const { todos } = payload;
+      return { ...state, data: todos, isLoading: false };
     }
 
     case LOAD_TODOS_FAILED: {
-      return state;
+      return { ...state, isLoading: false };
     }
 
     case LOAD_TODOS_IN_PROGRESS: {
-      return state;
+      return { ...state, isLoading: true };
     }
 
     default:
